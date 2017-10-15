@@ -1,0 +1,41 @@
+<div class="row">
+  {{#each articles}}
+  <article id="{{this._id}}">
+      <div class="col-xs-8">
+        <p><a href="{{this.link}}" target="_blank">{{this.title}}</a></p>
+      </div>
+      <div class="col-xs-2">
+        <button class="btn btn-success text-center note-btn" 
+        data-id="{{this._id}}">Notes</button>
+      </div>
+      <div class="col-xs-2">
+        <button class="btn btn-danger text-center delete-btn" 
+        data-id="{{this._id}}">Delete</button>
+      </div>
+    </article>
+  {{/each}}
+</div>
+
+<script>
+$(document).ready(function(){
+  $(".delete-btn").on("click", function(){
+    const id = $(this).attr("data-id");
+    $.ajax({
+      url: "/delete/article",
+      method: "DELETE",
+      data: {id: id},
+      success: $(`#${id}`).remove()
+    })
+  });
+
+  $(".note-btn").on("click", function(){
+    //get notes
+    const note = {
+      _id: "asdfasf",
+      body: ""
+    }
+    modalNote(note);
+  })
+})
+
+</script>

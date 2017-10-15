@@ -1,0 +1,45 @@
+<div class="row">
+  {{#each articles}}
+  <article>
+    <div class="col-xs-10">
+      <p><a href="{{this.link}}" target="_blank">{{this.title}}</a></p>
+    </div>
+    <div class="col-xs-2">
+      <button class="btn btn-success text-center save-btn" 
+      data-title="{{this.title}}"
+      data-link="{{this.link}}">Save</button>
+    </div>
+  </article>
+  {{/each}}
+</div>
+
+<script>
+$(document).ready(function(){
+  $(".save-btn").on("click", function(){
+    const article = {
+      title: $(this).attr("data-title"),
+      link: $(this).attr("data-link")
+    }
+
+    $.ajax({
+      method: "POST",
+      data: article,
+      url: "/save/article",
+      success: function(data){
+        if(data === "OK"){
+          modalAlert("Saved");
+        }
+      },
+      error: function(err){
+        const {statusText} = err;
+        if(statusText === "Bad Request"){
+          modalAlert("Already Saved");
+        } else {
+          modalAlert("Server Error: Article has not been saved");
+        }
+      }
+    });
+  });
+});
+
+</script>

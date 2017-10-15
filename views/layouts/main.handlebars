@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Scraper</title>
+
+   {{!-- Bootstrap File --}}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   {{!-- Google Fonts  --}}
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Monoton|Roboto"
+    rel="stylesheet">
+   {{!-- CSS Files --}}
+  <link href="../assets/css/style.css" media="all"
+    rel="stylesheet" type="text/css" />
+  <link href="../assets/css/footer.css" media="all"
+    rel="stylesheet" type="text/css" />
+  <link href="../assets/css/modal.css" media="all"
+  rel="stylesheet" type="text/css" />
+   {{!-- JQuery  --}}
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  {{!-- Modal Script --}}
+  <script src="../assets/js/modal.js"></script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div class="container" id="content">
+      <div class="jumbotron">
+        <a href="/"><img src="../assets/images/NPRLogo.png" class="img-responsive"></a>
+        <br>
+        <div class="row btn-row">
+          <div class="col-xs-12 text-center">
+            <a href="/scrape"><button class="btn btn-primary">Scrape</button></a>
+            <a href="/saved"><button class="btn btn-primary">View Saved</button></a>
+          </div>
+        </div>
+        <br><hr>
+
+        {{{body}}}
+      </div>
+
+
+    </div>
+    <div class="footer" id="footer">NPR News Scraper - Adam Haag 2017</div>
+    <div id="w3Modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h4 id="message" class="text-center"></h4>
+      </div>
+    </div>
+  </div>  
+</body>
+</html>
